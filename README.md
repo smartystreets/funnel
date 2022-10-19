@@ -8,14 +8,14 @@ Just a series of exercises in understanding go concurrency.
 ## Concepts
 
 1. Goroutines are concurrently executing functions (within the same address space)
-2. The main function of a Go program runs in a goroutine (running programs always have at least one goroutine)
-3. When the 'main' goroutine exits, the entire process exits (along with any unfinished goroutines)
-4. The Go scheduler decides which goroutine(s) runs at any given moment, but they are limited in how they transition from one goroutine to another
-5. When a goroutine encounters a blocking I/O operation the scheduler is given the opportunity to transition to a different goroutine
-6. When no goroutine can proceed a deadlock occurs (which results in a panic)
-7. Because goroutines run in the same address space, they can refer to variables with common scope
-8. When multiple goroutines attempt to access the same variable and at least one access is a 'write' operations, there is a potential for a data race, which could result in crashes or memory corruption
-9. One approach to safe concurrency is to use a 'mutex' (mutual exclusion lock)
+2. Because goroutines run in the same address space, they can refer to variables with common scope
+3. One approach to safe concurrency is to use a 'mutex' (mutual exclusion lock)
+4. The main function of a Go program runs in a goroutine (running programs always have at least one goroutine)
+5. When the 'main' goroutine exits, the entire process exits (along with any unfinished goroutines)
+6. The Go scheduler decides which goroutine(s) runs at any given moment, but they are limited in how they transition from one goroutine to another
+7. When a goroutine encounters a blocking I/O operation the scheduler is given the opportunity to transition to a different goroutine
+8. When no goroutine can proceed a deadlock occurs (which results in a panic)
+9. When multiple goroutines attempt to access the same variable and at least one access is a 'write' operations, there is a potential for a data race, which could result in crashes or memory corruption
 10. Another approach to safe concurrency is Go channels, which are FIFO queue structures that are actually safe to send to/receive from across multiple goroutines
 11. Go Slogan: "Do not communicate by sharing memory; instead, share memory by communicating."
 12. Attempting to receive on an empty channel blocks the current goroutine until a value is sent or the channel is closed (which results in the 'zero value' being received).
