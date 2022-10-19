@@ -4,6 +4,7 @@
 
 Just a series of exercises in understanding go concurrency.
 
+
 ## Concepts
 
 1. Goroutines are concurrently executing functions (within the same address space)
@@ -22,6 +23,8 @@ Just a series of exercises in understanding go concurrency.
 14. Concurrency != Parallelism
 15. A Go program that is limited to running a single goroutine at a time is said to be concurrent
 16. A Go program that can run multiple goroutines at the same time (such as by multiple CPUs) is said to be parallel
+17. A function that loads a channel should almost always close it when finished (ie. `defer close(ch)`)
+
 
 ## Resources
 
