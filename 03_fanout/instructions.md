@@ -2,10 +2,10 @@ Read each instruction aloud before executing it. Unless otherwise noted, proceed
 
 ### MAIN [1]
 
-1. Commission LOADER (Give envelope with input cards)
+1. Commission the LOADER (Give envelope with input cards)
 2. Commission 1-3 WORKERs
-3. Commission MERGER
-4. IF all DRAINERS are seated, go to step 8. 
+3. Commission the MERGER
+4. If all DRAINERS are seated, go to step 8. 
 5. Wait for any DRAINER to hold out a card.
 6. Take the card and announce what is written on it.
 7. Go to step 4.
