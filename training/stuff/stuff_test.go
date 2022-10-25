@@ -1,4 +1,4 @@
-package funnel
+package stuff
 
 import "testing"
 
