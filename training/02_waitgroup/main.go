@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mdwhatcott/funnel/training/stuff"
+	"github.com/mdwhatcott/funnel/training/internet"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
 	defer func() { fmt.Println(time.Since(started)) }()
 
 	var waiter sync.WaitGroup
-	for _, address := range stuff.Addresses {
+	for _, address := range internet.Addresses {
 		waiter.Add(1)
 		go printTitle(waiter.Done, address)
 	}
@@ -22,5 +22,5 @@ func main() {
 
 func printTitle(done func(), address string) {
 	defer done()
-	fmt.Println(stuff.ScrapeTitle(address))
+	fmt.Println(internet.Scrape(address))
 }

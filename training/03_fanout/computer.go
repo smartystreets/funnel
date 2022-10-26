@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mdwhatcott/funnel/training/stuff"
+	"github.com/mdwhatcott/funnel/training/internet"
 )
 
 func main() {
@@ -31,14 +31,14 @@ func main() {
 }
 func LOADER(input chan string) {
 	defer close(input)
-	for _, address := range stuff.Addresses {
+	for _, address := range internet.Addresses {
 		input <- address
 	}
 }
 func WORKER(input chan string, output chan string) {
 	defer close(output)
 	for address := range input {
-		output <- stuff.ScrapeTitle(address)
+		output <- internet.Scrape(address)
 	}
 }
 func MERGER(workerOutputs []chan string, final chan string) {

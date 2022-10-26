@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/mdwhatcott/funnel/training/stuff"
+	"github.com/mdwhatcott/funnel/training/internet"
 )
 
 func main() {
 	started := time.Now()
 	defer func() { fmt.Println(time.Since(started)) }()
 
-	for _, address := range stuff.Addresses {
-		fmt.Println(stuff.ScrapeTitle(address))
+	for _, address := range internet.Addresses {
+		fmt.Println(internet.Scrape(address))
 	}
 }
