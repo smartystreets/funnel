@@ -4,7 +4,7 @@ MAIN
 2. Allocate a whiteboard channel labeled "LOADER".
 3. Provide the LOADER with a stack of sticky notes.
 4. Commission someone to be a WORKER.
-5. Allocate a whiteboard channel labeled "WORKER: [NAME]". (use person'a actual name)
+5. Allocate a whiteboard channel labeled "WORKER: [NAME]".
 6. Show the WORKER where the LOADER's channel is located.
 7. If there are fewer than 3 WORKERs and you desire more, go to step 4.
 8. Commission someone to be the MERGER.
@@ -23,7 +23,7 @@ LOADER
 1. If you are out of sticky notes, go to step 6.
 2. Write an incrementing number on the topmost sticky note.
 3. If your channel contains a sticky note, go to step 3.
-4. Take the topmost sticky note from your stack of sticky notes and place it on your channel.
+4. Place the topmost sticky note from your stack on your channel.
 5. Go to step 1.
 6. Cross out the label above your channel.
 7. Congratulations, you are finished and may take your seat.
