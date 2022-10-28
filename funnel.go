@@ -9,6 +9,12 @@ func FanOut[T any](input chan T, workers int, work func(T) T) chan T {
 	if workers > maxWorkerCount {
 		panic("are you sure you want that many workers?")
 	}
+	if input == nil {
+		panic("input chan is nil")
+	}
+	if work == nil {
+		panic("work callback is nil")
+	}
 	var outputs []chan T
 	for x := 0; x < workers; x++ {
 		output := make(chan T)
