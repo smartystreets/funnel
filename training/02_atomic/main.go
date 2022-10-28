@@ -2,32 +2,27 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"sync/atomic"
 	"time"
 )
 
-var state int
-var lock sync.Mutex
+var state int64
 
 func main() {
 	for x := 0; x < 100; x++ {
 		go increment()
 		go decrement()
+		go display()
 	}
 	time.Sleep(time.Second)
-
-	lock.Lock()
-	defer lock.Unlock()
-	fmt.Println(state)
 }
 
 func increment() {
-	lock.Lock()
-	defer lock.Unlock()
-	state++
+	atomic.AddInt64(&state, 1)
 }
 func decrement() {
-	lock.Lock()
-	defer lock.Unlock()
-	state--
+	atomic.AddInt64(&state, -1)
+}
+func display() {
+	fmt.Println(state)
 }
