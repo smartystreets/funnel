@@ -1,3 +1,3 @@
-module github.com/mdwhatcott/funnel
+module github.com/smartystreets/funnel
 
 go 1.19

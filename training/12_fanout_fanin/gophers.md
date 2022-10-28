@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mdwhatcott/funnel/training/internet"
+	"github.com/smartystreets/funnel/training/internet"
 )
 
 func main() {
