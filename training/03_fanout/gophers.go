@@ -30,29 +30,29 @@ func main() {
 	}
 }
 func LOADER(input chan string) {
-	defer close(input)
 	for _, address := range internet.Addresses {
 		input <- address
 	}
+	close(input)
 }
 func WORKER(input chan string, output chan string) {
-	defer close(output)
 	for address := range input {
 		output <- internet.Scrape(address)
 	}
+	close(output)
 }
 func MERGER(workerOutputs []chan string, final chan string) {
-	defer close(final)
 	var waiter sync.WaitGroup
-	defer waiter.Wait()
-	waiter.Add(len(workerOutputs))
 	for _, out := range workerOutputs {
+		waiter.Add(1)
 		go DRAINER(out, final, waiter.Done)
 	}
+	waiter.Wait()
+	close(final)
 }
 func DRAINER(in, out chan string, done func()) {
-	defer done()
 	for v := range in {
 		out <- v
 	}
+	done()
 }
