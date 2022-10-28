@@ -1,22 +1,25 @@
 MAIN
 
-1. Commission someone to be the LOADER.
-2. Allocate a whiteboard channel labeled "LOADER".
-3. Provide the LOADER with a stack of cards.
-4. Commission someone to be a WORKER.
+1. Allocate a whiteboard channel labeled "LOADER".
+2. Commission someone to be the LOADER.
+3. Show the LOADER where their channel is located.
+4. Provide the LOADER with a stack of cards.
 5. Allocate a whiteboard channel labeled "WORKER: [NAME]".
-6. Show the WORKER where the LOADER's channel is located.
-7. If there are fewer than 3 WORKERs and you desire more, go to step 4.
-8. Commission someone to be the MERGER.
-9. Allocate a whiteboard channel labeled "MERGER".
-10. Show the MERGER where each WORKER's channel is located.
-11. If the MERGER's channel has been erased, go to step 16.
-12. If a card has not yet appeared on the MERGER's channel, go to step 11.
-13. Take the card from the MERGER's channel.
-14. Announce what is written on the card for all to hear.
-15. Go to step 11.
-16. Announce the following for all to hear: "Process exiting with status code zero!"
-17. Congratulations, the program is finished, you may take your seat.
+6. Commission someone to be a WORKER.
+7. Show the WORKER where the LOADER's channel is located.
+8. Show the WORKER where their channel is located.
+9. If there are fewer than 3 WORKERs and you desire more, go to step 6.
+10. Allocate a whiteboard channel labeled "MERGER".
+11. Commission someone to be the MERGER.
+12. Show the MERGER where their channel is located.
+13. Show the MERGER where each WORKER's channel is located.
+14. If the MERGER's channel has been erased, go to step 19.
+15. If a card has not yet appeared on the MERGER's channel, go to step 14.
+16. Take the card from the MERGER's channel.
+17. Announce what is written on the card for all to hear.
+18. Go to step 14.
+19. Announce the following for all to hear: "Process exiting with status code zero!"
+20. Congratulations, the program is finished, you may take your seat.
 
 LOADER
 
@@ -24,7 +27,7 @@ LOADER
 2. Write an incrementing number on the topmost card.
 3. Place the topmost card from your stack on your channel and hold it there until it is taken.
 4. Go to step 1.
-5. Erase your channel from the whiteboard.
+5. Erase the LOADER channel from the whiteboard.
 6. Congratulations, you are finished and may take your seat.
 
 WORKER
@@ -38,7 +41,7 @@ WORKER
 7. If your channel is not empty, go to step 7.
 8. Place the card on your channel and hold it there until it is taken.
 9. Go to step 1.
-10. Cross out the label above your channel.
+10. Erase your WORKER channel from the whiteboard.
 11. Congratulations, you are finished and may take your seat.
 
 <br>
@@ -59,11 +62,12 @@ MERGER
 3. Tell the newly commissioned DRAINER where the WORKER's channel is located.
 4. If there are fewer DRAINERs then WORKERs, go to step 2.
 5. Wait until all DRAINERs are seated.
-6. Congratulations, you are finished and may take your seat.
+6. Erase the MERGER channel from the whiteboard.
+7. Congratulations, you are finished and may take your seat.
 
 DRAINER
 
-1. If your assigned WORKER's channel has been erased, go to step 7.
+1. If your assigned WORKER's channel has been erased, go to step 6.
 2. If a card has not yet appeared on your assigned WORKER's channel, go to step 1.
 3. Take the card from your assigned WORKER's channel.
 4. Place the card on the MERGER's channel and hold it there until it is taken.
