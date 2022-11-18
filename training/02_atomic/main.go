@@ -24,5 +24,5 @@ func decrement() {
 	atomic.AddInt64(&state, -1)
 }
 func display() {
-	fmt.Println(state)
+	fmt.Println(atomic.LoadInt64(&state))
 }
