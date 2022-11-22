@@ -8,22 +8,22 @@ import (
 
 func TestFanOut_ZeroWorkers_Panics(t *testing.T) {
 	defer func() { recover() }()
-	FanOut(make(chan int), 0, func(int) int { return 0 })
+	GoFanOut(make(chan int), 0, func(int) int { return 0 })
 	t.Error("should have panicked...")
 }
 func TestFanOut_TooManyWorkers_Panics(t *testing.T) {
 	defer func() { recover() }()
-	FanOut(make(chan int), maxWorkerCount+1, func(int) int { return 0 })
+	GoFanOut(make(chan int), maxWorkerCount+1, func(int) int { return 0 })
 	t.Error("should have panicked...")
 }
 func TestFanOut_NilInput_Panics(t *testing.T) {
 	defer func() { recover() }()
-	FanOut(nil, 1, func(int) int { return 0 })
+	GoFanOut(nil, 1, func(int) int { return 0 })
 	t.Error("should have panicked...")
 }
 func TestFanOut_NilCallback_Panics(t *testing.T) {
 	defer func() { recover() }()
-	FanOut(make(chan int), 1, nil)
+	GoFanOut(make(chan int), 1, nil)
 	t.Error("should have panicked...")
 }
 func TestFanOut(t *testing.T) {
@@ -45,7 +45,7 @@ func TestFanOut(t *testing.T) {
 	}()
 
 	started := time.Now()
-	output := FanOut(input, workerCount, func(s string) string {
+	output := GoFanOut(input, workerCount, func(s string) string {
 		time.Sleep(time.Second) // simulate long-running process
 		return s + " " + fmt.Sprint(time.Now().Second())
 	})

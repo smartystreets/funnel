@@ -2,7 +2,7 @@ package funnel
 
 import "sync"
 
-func FanOut[T any](input chan T, workers int, work func(T) T) chan T {
+func GoFanOut[T any](input chan T, workers int, doWork func(T) T) chan T {
 	if workers <= minWorkerCount {
 		panic("worker count must be positive")
 	}
@@ -12,38 +12,30 @@ func FanOut[T any](input chan T, workers int, work func(T) T) chan T {
 	if input == nil {
 		panic("input chan is nil")
 	}
-	if work == nil {
-		panic("work callback is nil")
+	if doWork == nil {
+		panic("doWork callback is nil")
 	}
-	var outputs []chan T
-	for x := 0; x < workers; x++ {
-		output := make(chan T)
-		outputs = append(outputs, output)
-		go worker(input, output, work)
-	}
+
 	merged := make(chan T)
-	go merge(outputs, merged)
+	go coordinate(workers, doWork, input, merged)
 	return merged
 }
-func worker[T any](input, output chan T, work func(T) T) {
-	defer close(output)
-	for item := range input {
-		output <- work(item)
-	}
-}
-func merge[T any](outputs []chan T, merged chan T) {
-	defer close(merged)
+func coordinate[T any](workers int, doWork func(T) T, initial, final chan T) {
+	defer close(final)
 	var waiter sync.WaitGroup
 	defer waiter.Wait()
-	waiter.Add(len(outputs))
-	for _, output := range outputs {
-		go drain(output, merged, waiter.Done)
+	waiter.Add(workers)
+
+	for w := 0; w < workers; w++ {
+		intermediate := make(chan T)
+		go process(initial, intermediate, doWork, func() { close(intermediate) })
+		go process(intermediate, final, func(t T) T { return t }, waiter.Done)
 	}
 }
-func drain[T any](output, merged chan T, done func()) {
+func process[T any](input, output chan T, workFunc func(T) T, done func()) {
 	defer done()
-	for item := range output {
-		merged <- item
+	for item := range input {
+		output <- workFunc(item)
 	}
 }
 
