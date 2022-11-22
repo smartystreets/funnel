@@ -39,3 +39,35 @@ Just a series of exercises in understanding go concurrency.
 - Concurrency is not Parallelism: https://go.dev/blog/waza-talk
 - Channel Axioms: https://dave.cheney.net/2014/03/19/channel-axioms
 - Visualizing Go Concurrency: https://divan.dev/posts/go_concurrency_visualize/
+
+## Diagram
+
+Here's a example diagram showing what fan-out/fan-in looks like with 3 workers (each with a drainer). Each box is a `goroutine`, each arrow is a `channel`.
+
+
+```
+                                 +-----------------+
+                                 |     MERGER      |
+                                 |                 |
+                  +----------+   |  +-----------+  |
+                  |          |   |  |           |  |
+              +-->|  WORKER  +---+->|  DRAINER  +--+--+
+              |   |          |   |  |           |  |  |
+              |   +----------+   |  +-----------+  |  |
+              |                  |                 |  |
+              |                  |                 |  |
++----------+  |   +----------+   |  +-----------+  |  |      +--------+
+|          |  |   |          |   |  |           |  |  |      |        |
+|  LOADER  +--+-->|  WORKER  +---+->|  DRAINER  +--+--+----> |  MAIN  |
+|          |  |   |          |   |  |           |  |  |      |        |
++----------+  |   +----------+   |  +-----------+  |  |      +--------+
+              |                  |                 |  |
+              |                  |                 |  |
+              |   +----------+   |  +-----------+  |  |
+              |   |          |   |  |           |  |  |
+              +-->|  WORKER  +---+->|  DRAINER  +--+--+
+                  |          |   |  |           |  |
+                  +----------+   |  +-----------+  |
+                                 |                 |
+                                 +-----------------+
+```
