@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-var state int64
+var state = new(atomic.Int64)
 
 // spacer
 
@@ -19,6 +19,6 @@ func main() {
 	time.Sleep(time.Second)
 }
 
-func increment() { atomic.AddInt64(&state, 1) }
-func decrement() { atomic.AddInt64(&state, -1) }
-func display()   { fmt.Println(atomic.LoadInt64(&state)) }
+func increment() { state.Add(1) }
+func decrement() { state.Add(-1) }
+func display()   { fmt.Println(state.Load()) }

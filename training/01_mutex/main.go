@@ -7,6 +7,7 @@ import (
 )
 
 var state int
+
 var lock sync.RWMutex
 
 func main() {
@@ -16,21 +17,8 @@ func main() {
 		go display()
 	}
 	time.Sleep(time.Second)
-
 }
 
-func increment() {
-	lock.Lock()
-	defer lock.Unlock()
-	state++
-}
-func decrement() {
-	lock.Lock()
-	defer lock.Unlock()
-	state--
-}
-func display() {
-	lock.RLock()
-	defer lock.RUnlock()
-	fmt.Println(state)
-}
+func increment() { lock.Lock(); defer lock.Unlock(); state++ }
+func decrement() { lock.Lock(); defer lock.Unlock(); state-- }
+func display()   { lock.RLock(); defer lock.RUnlock(); fmt.Println(state) }
