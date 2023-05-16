@@ -42,7 +42,7 @@ Just a series of exercises in understanding go concurrency.
 
 ## Diagram
 
-Here's a example diagram showing what fan-out/fan-in looks like with 3 workers (each with a drainer). Each box is a `goroutine`, each arrow is a `channel`.
+Here's an example diagram showing what fan-out/fan-in looks like with 3 workers (each with a drainer). Each box is a different `goroutine`.
 
 
 ```
