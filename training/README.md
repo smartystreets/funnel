@@ -25,6 +25,11 @@ Just a series of exercises in understanding go concurrency.
 16. A Go program that can run multiple goroutines at the same time (such as by multiple CPUs) is said to be parallel
 17. A function that loads a channel should almost always close it when finished (ie. `defer close(ch)`)
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Resources
 
@@ -46,28 +51,28 @@ Here's an example diagram showing what fan-out/fan-in looks like with 3 workers 
 
 
 ```
-                                 +-----------------+
-                                 |     MERGER      |
-                                 |                 |
-                  +----------+   |  +-----------+  |
-                  |          |   |  |           |  |
-              +-->|  WORKER  +---+->|  DRAINER  +--+--+
-              |   |          |   |  |           |  |  |
-              |   +----------+   |  +-----------+  |  |
-              |                  |                 |  |
-              |                  |                 |  |
-+----------+  |   +----------+   |  +-----------+  |  |      +--------+
-|          |  |   |          |   |  |           |  |  |      |        |
-|  LOADER  +--+-->|  WORKER  +---+->|  DRAINER  +--+--+----> |  MAIN  |
-|          |  |   |          |   |  |           |  |  |      |        |
-+----------+  |   +----------+   |  +-----------+  |  |      +--------+
-              |                  |                 |  |
-              |                  |                 |  |
-              |   +----------+   |  +-----------+  |  |
-              |   |          |   |  |           |  |  |
-              +-->|  WORKER  +---+->|  DRAINER  +--+--+
-                  |          |   |  |           |  |
-                  +----------+   |  +-----------+  |
-                                 |                 |
-                                 +-----------------+
+                                +-----------------+
+                                |     MERGER      |
+                                |                 |
+                 +----------+   |  +-----------+  |
+                 |          |   |  |           |  |
+              +->|  WORKER  +---+->|  DRAINER  +--+--+
+              |  |          |   |  |           |  |  |
+              |  +----------+   |  +-----------+  |  |
+              |                 |                 |  |
+              |                 |                 |  |
++----------+  |  +----------+   |  +-----------+  |  |  +--------+
+|          |  |  |          |   |  |           |  |  |  |        |
+|  LOADER  +--+->|  WORKER  +---+->|  DRAINER  +--+--+->|  MAIN  |
+|          |  |  |          |   |  |           |  |  |  |        |
++----------+  |  +----------+   |  +-----------+  |  |  +--------+
+              |                 |                 |  |
+              |                 |                 |  |
+              |  +----------+   |  +-----------+  |  |
+              |  |          |   |  |           |  |  |
+              +->|  WORKER  +---+->|  DRAINER  +--+--+
+                 |          |   |  |           |  |
+                 +----------+   |  +-----------+  |
+                                |                 |
+                                +-----------------+
 ```
