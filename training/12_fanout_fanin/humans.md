@@ -23,7 +23,7 @@ MAIN
 
 LOADER
 
-1. If you are out of cards, go to step 6.
+1. If you are out of cards, go to step 5.
 2. Write an incrementing number on the topmost card.
 3. Place the topmost card from your stack on your channel and hold it there until it is taken.
 4. Go to step 1.
@@ -59,11 +59,12 @@ MERGER
 
 1. Take note of the location of each WORKER channel, as shown by MAIN.
 2. Commission a new DRAINER for a WORKER
-3. Tell the newly commissioned DRAINER where the WORKER's channel is located.
-4. If there are fewer DRAINERs then WORKERs, go to step 2.
-5. Wait until all DRAINERs are seated.
-6. Erase the MERGER channel from the whiteboard.
-7. Congratulations, you are finished and may take your seat.
+3. Show the newly commissioned DRAINER where the WORKER's channel is located.
+4. Show the newly commissioned DRAINER where your channel is located.
+5. If there are fewer DRAINERs then WORKERs, go to step 2.
+6. Wait until all DRAINERs are seated.
+7. Erase the MERGER channel from the whiteboard.
+8. Congratulations, you are finished and may take your seat.
 
 DRAINER
 
