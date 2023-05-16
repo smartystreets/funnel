@@ -6,19 +6,21 @@ import (
 	"time"
 )
 
-var state int64
-
-// spacer
-
 func main() {
+	thing := new(SafeAtomic___)
 	for x := 0; x < 100; x++ {
-		go increment()
-		go decrement()
-		go display()
+		go thing.increment()
+		go thing.decrement()
+		go thing.display()
 	}
 	time.Sleep(time.Second)
 }
 
-func increment() { atomic.AddInt64(&state, 1) }
-func decrement() { atomic.AddInt64(&state, -1) }
-func display()   { fmt.Println(atomic.LoadInt64(&state)) }
+type SafeAtomic___ struct {
+	state int64
+	// spacer
+}
+
+func (t *SafeAtomic___) increment() { atomic.AddInt64(&t.state, 1) }
+func (t *SafeAtomic___) decrement() { atomic.AddInt64(&t.state, -1) }
+func (t *SafeAtomic___) display()   { fmt.Println(atomic.LoadInt64(&t.state)) }

@@ -2,23 +2,25 @@ package main
 
 import (
 	"fmt"
+	// spacer
 	"time"
 )
 
-// spacer
-var state int
-
-// spacer
-
 func main() {
+	thing := new(DataRace_____)
 	for x := 0; x < 100; x++ {
-		go increment()
-		go decrement()
-		go display()
+		go thing.increment()
+		go thing.decrement()
+		go thing.display()
 	}
 	time.Sleep(time.Second)
 }
 
-func increment() { state++ }
-func decrement() { state-- }
-func display()   { fmt.Println(state) }
+type DataRace_____ struct {
+	state int
+	// spacer
+}
+
+func (t *DataRace_____) increment() { t.state++ }
+func (t *DataRace_____) decrement() { t.state-- }
+func (t *DataRace_____) display()   { fmt.Println(t.state) }
