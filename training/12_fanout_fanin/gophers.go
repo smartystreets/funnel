@@ -15,18 +15,18 @@ func main() {
 	input := make(chan string)
 	go LOADER(input)
 
-	var workers []chan string
+	var workerOutputs []chan string
 	for x := 0; x < 10; x++ {
 		output := make(chan string)
-		workers = append(workers, output)
+		workerOutputs = append(workerOutputs, output)
 		go WORKER(input, output)
 	}
 
 	final := make(chan string)
-	go MERGER(workers, final)
+	go MERGER(workerOutputs, final)
 
-	for a := range final {
-		fmt.Println(a)
+	for value := range final {
+		fmt.Println(value)
 	}
 }
 func LOADER(input chan string) {
@@ -35,7 +35,7 @@ func LOADER(input chan string) {
 	}
 	close(input)
 }
-func WORKER(input chan string, output chan string) {
+func WORKER(input, output chan string) {
 	for address := range input {
 		output <- internet.Scrape(address)
 	}
@@ -50,9 +50,9 @@ func MERGER(workerOutputs []chan string, final chan string) {
 	waiter.Wait()
 	close(final)
 }
-func DRAINER(in, out chan string, done func()) {
-	for v := range in {
-		out <- v
+func DRAINER(input, output chan string, done func()) {
+	for v := range input {
+		output <- v
 	}
 	done()
 }
