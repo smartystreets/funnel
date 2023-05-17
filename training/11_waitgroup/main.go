@@ -24,3 +24,8 @@ func printTitle(done func(), a int, address string) {
 	defer done()
 	fmt.Println(a, internet.Scrape(address))
 }
+
+/*
+What happened to the input order?
+What are the implications of this approach as the number of inputs increases?
+*/

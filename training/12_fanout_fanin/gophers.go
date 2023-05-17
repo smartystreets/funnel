@@ -56,3 +56,17 @@ func DRAINER(input, output chan string, done func()) {
 	}
 	done()
 }
+
+/*
+The draining and closing of every goroutine is accounted for.
+This approach does NOT preserve input order.
+The number of workers is configurable (scales with more input).
+This is the same approach used by the `gitreview` process to execute `git fetch` on all your repos.
+It's used in our CLI as well as several other places in actual production code.
+10. Another approach to safe concurrency is Go channels, which are FIFO queue structures that are actually safe to send to/receive from across multiple goroutines
+11. Go Slogan: "Do not communicate by sharing memory; instead, share memory by communicating."
+12. Attempting to receive on an empty channel blocks the current goroutine until a value is sent or the channel is closed (which results in the 'zero value' being received).
+13. Attempting to send on an 'unbuffered' channel blocks until the value is received or the channel is closed (which then results in a panic)
+14. Concurrency != Parallelism
+17. A function that loads a channel should almost always close it when finished (ie. `defer close(ch)`)
+*/

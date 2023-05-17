@@ -15,3 +15,7 @@ func main() {
 		fmt.Println(a, internet.Scrape(address))
 	}
 }
+
+/*
+https://go.dev/talks/2012/waza.slide#12
+*/

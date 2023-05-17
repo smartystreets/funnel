@@ -26,3 +26,7 @@ type SafeLocking__ struct {
 func (t *SafeLocking__) increment() { t.lock.Lock(); defer t.lock.Unlock(); t.state++ }
 func (t *SafeLocking__) decrement() { t.lock.Lock(); defer t.lock.Unlock(); t.state-- }
 func (t *SafeLocking__) display()   { t.lock.RLock(); defer t.lock.RUnlock(); fmt.Println(t.state) }
+
+/*
+3. One approach to safe concurrency is to use a 'mutex' (mutual exclusion lock)
+*/
