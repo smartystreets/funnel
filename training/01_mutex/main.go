@@ -14,6 +14,8 @@ func main() {
 		go thing.display()
 	}
 	time.Sleep(time.Second)
+	fmt.Println("final:")
+	thing.display()
 }
 
 type SafeLocking__ struct {

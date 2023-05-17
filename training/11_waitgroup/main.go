@@ -13,14 +13,14 @@ func main() {
 	defer func() { fmt.Println(time.Since(started)) }()
 
 	var waiter sync.WaitGroup
-	for _, address := range internet.Addresses {
+	for a, address := range internet.Addresses {
 		waiter.Add(1)
-		go printTitle(waiter.Done, address)
+		go printTitle(waiter.Done, a, address)
 	}
 	waiter.Wait()
 }
 
-func printTitle(done func(), address string) {
+func printTitle(done func(), a int, address string) {
 	defer done()
-	fmt.Println(internet.Scrape(address))
+	fmt.Println(a, internet.Scrape(address))
 }
