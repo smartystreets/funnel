@@ -12,7 +12,7 @@ func main() {
 	defer func() { fmt.Println(time.Since(started)) }()
 
 	for a, address := range internet.Addresses {
-		fmt.Println(a, internet.Scrape(address))
+		fmt.Println(a, address, internet.ScrapeTitle(address))
 	}
 }
 

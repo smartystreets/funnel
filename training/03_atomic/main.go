@@ -33,4 +33,8 @@ func (t *SafeAtomicPtr) display()   { fmt.Println(t.state.Load()) }
 16. A Go program that can run multiple goroutines at the same time (such as by multiple CPUs) is said to be parallel
 
 runtime.GOMAXPROCS(runtime.NumCPU())
+
+What 'HACK' do each of these programs share?
+
+11. Go Slogan: "Do not communicate by sharing memory; instead, share memory by communicating."
 */

@@ -22,7 +22,7 @@ func main() {
 
 func printTitle(done func(), a int, address string) {
 	defer done()
-	fmt.Println(a, internet.Scrape(address))
+	fmt.Println(a, address, internet.ScrapeTitle(address))
 }
 
 /*
