@@ -44,6 +44,6 @@ var Addresses = []string{
 func ScrapeTitle(address string) string {
 	response, _ := http.Get(address)
 	content, _ := io.ReadAll(response.Body)
-	re, _ := regexp.Compile(`\<title\>(.*)\<\/title\>`) // H̸̡̪̯ͨ͊̽̅̾̎Ȩ̬̩̾͛ͪ̈́̀́͘ ̶̧̨̱̹̭̯ͧ̾ͬC̷̙̲̝͖ͭ̏ͥͮ͟Oͮ͏̮̪̝͍M̲̖͊̒ͪͩͬ̚̚͜Ȇ̴̟̟͙̞ͩ͌͝S̨ͯ̿̔̀ ̥̫͎̭ͅ... https://stackoverflow.com/a/1732454
+	re, _ := regexp.Compile(`\<title.*\>(.*)\<\/title\>`) // H̸̡̪̯ͨ͊̽̅̾̎Ȩ̬̩̾͛ͪ̈́̀́͘ ̶̧̨̱̹̭̯ͧ̾ͬC̷̙̲̝͖ͭ̏ͥͮ͟Oͮ͏̮̪̝͍M̲̖͊̒ͪͩͬ̚̚͜Ȇ̴̟̟͙̞ͩ͌͝S̨ͯ̿̔̀ ̥̫͎̭ͅ... https://stackoverflow.com/a/1732454
 	return re.FindStringSubmatch(string(content))[1]
 }
