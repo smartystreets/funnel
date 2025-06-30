@@ -8,7 +8,7 @@ import (
 
 func main() {
 	thing := &SafeAtomicPtr{state: new(atomic.Int32)}
-	for x := 0; x < 100; x++ {
+	for range 100 {
 		go thing.increment()
 		go thing.decrement()
 		go thing.display()

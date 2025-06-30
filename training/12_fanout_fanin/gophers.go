@@ -16,7 +16,7 @@ func main() {
 	go LOADER(input)
 
 	var workerOutputs []chan string
-	for x := 0; x < 10; x++ {
+	for range 10 {
 		output := make(chan string)
 		workerOutputs = append(workerOutputs, output)
 		go WORKER(input, output)
